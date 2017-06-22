@@ -1,0 +1,7 @@
+explore_drupal.content:
+  path: '/explore'
+  defaults:
+    _controller: '\Drupal\explore_drupal\Controller\ExploreController::content'
+    _title: 'Hello World'
+  requirements:
+    _permission: 'access content'
