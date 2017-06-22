@@ -1,5 +1,5 @@
 explore_drupal.admin:
-  title: 'Explore Drupal Settings'
+  title: 'Explore drupal settings'
   description: 'example of how to make an admin settings page link'
   parent: system.admin_config_development
   route_name: explore_drupal.content
