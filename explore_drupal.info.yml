@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 name: Explore Drupal Module
 description: Creates a page showing "Hello World".
 package: Custom
 type: module
 version: 1.0
 core: 8.x
-=======
-name: Explore Drupal
-type: module
-description: Testing Functionality of Drupal 8
-core: 8.x
-package: Custom
->>>>>>> 228954581a50772dcb5f159ffbd7d2a3148daec6
