@@ -1,0 +1,18 @@
+explore_drupal.admin:
+  title: 'Explore Drupal Settings'
+  description: 'example of how to make an admin settings page link'
+  parent: system.admin_config_development
+  route_name: explore_drupal.content
+  weight: 100
+explore_drupal.admin2:
+  title: 'Example'
+  description: 'example of how to make an admin settings page link'
+  parent: system.admin_config_development
+  url: http://example.com/this-is-some-example
+  weight: 101
+explore_drupal.admin3:
+  title: 'Hello World'
+  description: 'example of how to make an admin settings page link'
+  parent: system.admin_config_development
+  url: internal:/some-internal-path
+  weight: 102
