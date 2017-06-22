@@ -3,6 +3,8 @@
 namespace Drupal\explore_drupal\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a 'Hello' Block.
@@ -13,7 +15,9 @@ use Drupal\Core\Block\BlockBase;
  *   category = @Translation("Hello World"),
  * )
  */
-class ExploreBlock extends BlockBase {
+//class ExploreBlock extends BlockBase {
+//
+class ExploreBlock extends BlockBase implements BlockPluginInterface {
 
   /**
    * {@inheritdoc}
@@ -22,6 +26,33 @@ class ExploreBlock extends BlockBase {
     return array(
       '#markup' => $this->t('Hello, World!'),
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $form = parent::blockForm($form, $form_state);
+
+    $config = $this->getConfiguration();
+
+    $form['hello_block_name'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Who'),
+      '#description' => $this->t('Who do you want to say hello to?'),
+      '#default_value' => isset($config['hello_block_name']) ? $config['hello_block_name'] : '',
+    );
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    parent::blockSubmit($form, $form_state);
+    $values = $form_state->getValues();
+    $this->configuration['hello_block_name'] = $values['hello_block_name'];
   }
 
 }
