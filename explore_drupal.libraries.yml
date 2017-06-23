@@ -1,0 +1,11 @@
+cuddly-slider:
+  version: 1.x
+  css:
+    theme:
+      css/cuddly-slider.css: {} #to disable aggregation use {preprocess: false}
+
+  js:
+    js/cuddly-slider.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

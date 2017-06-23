@@ -33,3 +33,11 @@ function explore_drupal_theme() {
     ],
   ];
 }
+
+/**
+ * Implements hook_page_attachments.
+ */
+function explore_drupal_page_attachments_alter(&$build) {
+  $build['#attached']['library'][] = 'explore_drupal/cuddly-slider';
+  $build['#attached']['drupalSettings']['explore_drupal']['cuddlySlider']['foo'] = '123';
+}
