@@ -11,7 +11,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @Block(
  *   id = "explore_block",
- *   admin_label = @Translation("Hello block"),
+ *   admin_label = @Translation("explore block"),
  *   category = @Translation("Hello World"),
  * )
  */
@@ -25,7 +25,7 @@ class ExploreBlock extends BlockBase implements BlockPluginInterface {
   /*
   public function build() {
     return array(
-      '#markup' => $this->t('Hello, World!'),
+      '#markup' => $this->t('explore, World!'),
     );
   }
   */
@@ -36,8 +36,8 @@ class ExploreBlock extends BlockBase implements BlockPluginInterface {
   public function build() {
     $config = $this->getConfiguration();
 
-    if (!empty($config['hello_block_name'])) {
-      $name = $config['hello_block_name'];
+    if (!empty($config['explore_block_name'])) {
+      $name = $config['explore_block_name'];
     }
     else {
       $name = $this->t('to no one');
@@ -58,11 +58,11 @@ class ExploreBlock extends BlockBase implements BlockPluginInterface {
 
     $config = $this->getConfiguration();
 
-    $form['hello_block_name'] = array(
+    $form['explore_block_name'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Who'),
-      '#description' => $this->t('Who do you want to say hello to?'),
-      '#default_value' => isset($config['hello_block_name']) ? $config['hello_block_name'] : '',
+      '#description' => $this->t('Who do you want to say explore to?'),
+      '#default_value' => isset($config['explore_block_name']) ? $config['explore_block_name'] : '',
     );
 
     return $form;
@@ -75,7 +75,7 @@ class ExploreBlock extends BlockBase implements BlockPluginInterface {
   public function blockSubmit($form, FormStateInterface $form_state) {
     parent::blockSubmit($form, $form_state);
     $values = $form_state->getValues();
-    $this->configuration['hello_block_name'] = $values['hello_block_name'];
+    $this->configuration['explore_block_name'] = $values['explore_block_name'];
   }
   */
 
@@ -83,7 +83,17 @@ class ExploreBlock extends BlockBase implements BlockPluginInterface {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
-    $this->configuration['hello_block_name'] = $form_state->getValue('hello_block_name');
+    $this->configuration['explore_block_name'] = $form_state->getValue('explore_block_name');
   }
 
+  /**
+   * Verifying autoload of config from file /config/install/explore_drupal.setting.yml
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    $default_config = \Drupal::config('explore_drupal.settings');
+    return array(
+      'name' => $default_config->get('explore.name'),
+    );
+  }
 }
